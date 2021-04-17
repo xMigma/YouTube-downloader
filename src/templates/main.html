@@ -1,0 +1,18 @@
+{% extends "layout.html"%}
+
+{%block content%}
+<body>
+  <section class="container mt-5">
+    <div class="download-section">
+      <form method="POST">
+        <div class="input-group input-group-lg">
+          <input name="url" type="url" placeholder="Introduzca la URL del video..." aria-label="url" class="form-control">
+          <div class="input-group-append">
+            <button type="submit" aria-label="Descargar" class="btn btn-primary">Descargar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+{% endblock%}

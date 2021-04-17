@@ -1,0 +1,66 @@
+{% extends "layout.html"%}
+
+{%block content%}
+
+<script>
+    function bytesToSize(bytes) {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes == 0) return '0 Byte';
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+    }
+</script>
+
+<body>
+    <section class="container mt-5">
+        <div class="row">
+
+            <div class="col-auto">
+                <img src="{{url.thumbnail_url}}" class="thumbnail">
+            </div>
+
+            <div class="col">
+                <form action="{{url_for('descargar_video')}}" method="POST">
+
+                    <div class="info">
+                        <p>
+                            <strong>{{url.title}}</strong>
+                            <br>
+                            <small>Duración: {{duracion}}</small>
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <select name="itag" class="form-select">
+                                    {% for i in url.streams.filter(file_extension='mp4', adaptive=True) %}
+                                    <option value="{{i.itag}}">
+                                        {% if (i.resolution|string) == 'None' %}
+                                        Audio
+                                        {% else %}
+                                        {{i.resolution}}
+                                        {% endif %}
+                                        <script>
+                                            var filesize = "{{i.filesize}}";
+                                            document.write("(" + bytesToSize(filesize) + ")")
+                                        </script>
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                                <div class="input-group-addon input-group-button">
+                                    <input type="hidden" value="{{ruta}}" name="ruta">
+                                    <button type="submit" class="btn btn-primary">Descargar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+</body>
+
+{% endblock %}
