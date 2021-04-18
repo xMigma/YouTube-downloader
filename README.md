@@ -1,5 +1,5 @@
 <h1>Descrición</h1>
-Programa para descargar videos de YouTube tanto en mp3 como en mp4
+Programa para descargar videos de YouTube en mp4 y en audio
 <h1>Instalación y ejecución</h1>
 <pre>
 git clone https://github.com/xMigma/YouTube-downloader
