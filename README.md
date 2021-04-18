@@ -4,8 +4,9 @@ Programa para descargar videos de YouTube en mp4 y en audio
 <pre>
 git clone https://github.com/xMigma/YouTube-downloader
 cd YouTube-downloader
-pip install -r requeriments.txt
-python main.py
+virtualenv venv
+.\env\Scripts\activate
+python src/app.py
 </pre>
 
 <h2>ADVERTENCIA</h2>
