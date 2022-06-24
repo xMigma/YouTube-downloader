@@ -10,10 +10,11 @@ app.secret_key = "migma"
 def main():
     if request.method == 'POST':
         session['url'] = request.form["url"]
-        url = YouTube(session['url'])
-        filesize = round(url.streams.first().filesize / 10**6, 2)
-        duracion = strftime("%M:%S", gmtime(round(url.length)))
-        return render_template('descargar.html', url=url, filesize=filesize, duracion=duracion)
+        if session['url'] != "":
+            url = YouTube(session['url'])
+            filesize = round(url.streams.first().filesize / 10**6, 2)
+            duracion = strftime("%M:%S", gmtime(round(url.length)))
+            return render_template('descargar.html', url=url, filesize=filesize, duracion=duracion)
     return render_template('main.html')
 
 @app.route('/descargar', methods=['GET', 'POST'])
