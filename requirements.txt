@@ -1,0 +1,4 @@
+Flask==1.1.2
+hurry==1.1
+hurry.filesize==0.9
+pytube==12.1.0
