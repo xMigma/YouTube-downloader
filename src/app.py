@@ -4,7 +4,6 @@ from hurry.filesize import size
 from time import strftime, gmtime
 
 app = Flask(__name__)
-app.secret_key = "migma"
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
