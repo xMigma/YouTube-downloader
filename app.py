@@ -2,9 +2,10 @@ from flask import Flask, render_template, request, send_file, url_for, redirect,
 from pytube import YouTube
 from hurry.filesize import size
 from time import strftime, gmtime
+from decouple import config
 
 app = Flask(__name__)
-app.secret_key = 'migma'
+app.secret_key = config('SECRET_KEY')
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
